@@ -1,0 +1,15 @@
+{
+  "name": "mews-server",
+  "version": "0.0.0",
+  "description": "Mews server",
+  "author": "Billy Janitsch <billyjanitsch@gmail.com> (http://github.com/billyjanitsch)",
+  "repository": "billyjanitsch/mews",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "music"
+  ],
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}

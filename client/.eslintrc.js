@@ -1,0 +1,23 @@
+module.exports = {
+  extends: 'airbnb',
+  plugins: ['babel'],
+  parser: 'babel-eslint',
+  rules: {
+    'babel/arrow-parens': [2, 'as-needed'],
+    'babel/object-curly-spacing': [2, 'never'],
+    'global-require': 0,
+    'import/no-unresolved': 0,
+    'jsx-quotes': [2, 'prefer-single'],
+    'new-cap': 0,
+    'no-confusing-arrow': 0,
+    'no-param-reassign': 0,
+    'no-shadow': 0,
+    'no-underscore-dangle': 0,
+    'object-curly-spacing': 0,
+    'prefer-spread': 2,
+    'react/jsx-indent': 0,
+    'react/react-in-jsx-scope': 0,
+    'react/jsx-no-duplicate-props': 2,
+    'semi': [2, 'never'],
+  },
+}

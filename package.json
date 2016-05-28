@@ -1,0 +1,26 @@
+{
+  "name": "mews",
+  "version": "0.0.0",
+  "description": "Music client/server",
+  "author": "Billy Janitsch <billyjanitsch@gmail.com> (http://github.com/billyjanitsch)",
+  "repository": "billyjanitsch/mews",
+  "license": "MIT",
+  "main": "start.js",
+  "bin": "cli.js",
+  "scripts": {
+    "start": "./start.js"
+  },
+  "engines": {
+    "node": "^6.0.0",
+    "npm": "^3.0.0"
+  },
+  "keywords": [
+    "music"
+  ],
+  "dependencies": {
+    "express": "^4.13.4",
+    "mews-client": "^0.0.0",
+    "mews-server": "^0.0.0",
+    "yargs": "^4.7.1"
+  }
+}
