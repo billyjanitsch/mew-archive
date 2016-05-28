@@ -13,4 +13,23 @@ const App = () =>
     <Router history={browserHistory} routes={routes} />
   </Provider>
 
-render(<App />, document.getElementById('root'))
+const rootElement = document.getElementById('root')
+render(<App />, rootElement)
+
+if (process.env.NODE_ENV === 'development' && module.hot) {
+  // hot reload reducers
+  module.hot.accept('./reducers', () => {
+    const nextReducer = require('./reducers').default
+    store.replaceReducer(nextReducer)
+  })
+
+  // hot reload components
+  module.hot.accept('./routes', () => {
+    const nextRoutes = require('./routes').default
+    const NextApp = () =>
+      <Provider store={store}>
+        <Router history={browserHistory} routes={nextRoutes} />
+      </Provider>
+    render(<NextApp />, rootElement)
+  })
+}
