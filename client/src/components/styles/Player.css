@@ -1,0 +1,32 @@
+.player {
+  user-select: none;
+  z-index: 5;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #24B38D;
+  color: white;
+  flex-direction: column;
+}
+
+.controls {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.control {
+  cursor: pointer;
+}
+
+.progress {
+  height: 3px;
+  background-color: #ccc;
+}
+
+.bar {
+  flex: 1;
+  background-color: orange;
+}

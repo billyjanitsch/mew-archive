@@ -1,21 +1,20 @@
-import {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {createStructuredSelector} from 'reselect'
-import {getArtistFactory} from '../selectors'
+import Types from '../types'
+import {artistFactory} from '../selectors'
 
-const Artist = props =>
-  <main>
-    <section>
+const Artist = props => props.artist
+  ? <div>
       <h1>{props.artist.name}</h1>
-    </section>
-  </main>
+    </div>
+  : <div>no such artist</div>
 
 Artist.propTypes = {
-  artist: PropTypes.object,
+  artist: Types.artist,
 }
 
 const mapStateToProps = createStructuredSelector({
-  artist: getArtistFactory('id'),
+  artist: artistFactory('params.id'),
 })
 
 export default connect(mapStateToProps)(Artist)

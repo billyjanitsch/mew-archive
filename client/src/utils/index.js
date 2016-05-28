@@ -1,5 +1,7 @@
 export action from './action'
+export bandname from './bandname'
 export createEntityFactory from './createEntityFactory'
 export createReducer from './createReducer'
 export ensureArray from './ensureArray'
 export insert from './insert'
+export invariant from './invariant'

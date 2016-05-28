@@ -17,6 +17,8 @@ const rootElement = document.getElementById('root')
 render(<App />, rootElement)
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
+  window.store = store
+
   // hot reload reducers
   module.hot.accept('./reducers', () => {
     const nextReducer = require('./reducers').default

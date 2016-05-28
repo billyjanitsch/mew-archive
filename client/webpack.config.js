@@ -12,6 +12,7 @@ module.exports = {
   entry: ['.'],
   output: {
     path: path.resolve(__dirname, 'lib'),
+    publicPath: '/',
     filename: '[hash].js',
   },
   plugins: remove([

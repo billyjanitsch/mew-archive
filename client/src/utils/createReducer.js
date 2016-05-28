@@ -1,7 +1,9 @@
-import {isPlainObject, get} from 'lodash'
+import {isPlainObject, isFunction, get, every} from 'lodash'
+import invariant from './invariant'
 
 const createReducer = (initialState, handlers) => {
-  if (!isPlainObject(handlers)) throw new Error('`handlers` must be an object.')
+  invariant(isPlainObject(handlers), 'handlers must be a plain object')
+  invariant(every(handlers, isFunction), 'handler values must be functions')
   return (state = initialState, action) => {
     const handler = get(handlers, action.type)
     return handler ? handler(state, action.payload) : state

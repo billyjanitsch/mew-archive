@@ -3,21 +3,21 @@ import {connect} from 'react-redux'
 import {createSelector, createStructuredSelector} from 'reselect'
 import {play, pause, stop, next, prev, navigate} from '../actions'
 import {position, currentTrack, isPlaying} from '../selectors'
-import cs from '../styles'
+import cs from './styles/Player'
 
-const Button = props =>
-  <div onClick={props.onClick}>
+const Control = props =>
+  <div onClick={props.onClick} className={cs.control}>
     {props.icon}
   </div>
 
-Button.propTypes = {
+Control.propTypes = {
   icon: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 }
 
 const ProgressBar = props =>
-  <div className='progress' onClick={props.navigate}>
-    <div className='bar' style={{transform: `translateX(${props.percent}%)`}} />
+  <div className={cs.progress} onClick={props.navigate}>
+    <div className={cs.bar} style={{transform: `translateX(${props.percent - 100}%)`}} />
   </div>
 
 ProgressBar.propTypes = {
@@ -26,15 +26,15 @@ ProgressBar.propTypes = {
 }
 
 const Player = props =>
-  <div className={cs.Player}>
+  <div className={cs.player}>
     <ProgressBar percent={props.percent} navigate={props.navigate} />
     <div className={cs.controls}>
-      <Button onClick={props.prev} icon='prev' />
+      <Control onClick={props.prev} icon='prev' />
       {props.isPlaying
-        ? <Button onClick={props.stop} icon='stop' />
-        : <Button onClick={props.play} icon='play' />
+        ? <Control onClick={props.stop} icon='stop' />
+        : <Control onClick={props.play} icon='play' />
       }
-      <Button onClick={props.next} icon='next' />
+      <Control onClick={props.next} icon='next' />
     </div>
   </div>
 

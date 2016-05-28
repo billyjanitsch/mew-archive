@@ -1,6 +1,6 @@
 const NotFound = () =>
-  <main>
+  <div>
     Page not found. 🐙
-  </main>
+  </div>
 
 export default NotFound

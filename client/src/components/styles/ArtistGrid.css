@@ -1,0 +1,29 @@
+.grid {
+  margin: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 210px;
+  margin: 10px;
+}
+
+.card:hover .image {
+  transition: opacity 0.1s;
+  opacity: 0.8;
+}
+
+.image {
+  height: 120px;
+  transition: opacity 0.5s;
+  flex: 1;
+  background-size: cover;
+  background-color: grey;
+}
+
+.info {
+  padding-top: 5px;
+}

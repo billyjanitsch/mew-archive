@@ -3,7 +3,10 @@
 }
 
 div,
+a,
 main,
+header,
+footer,
 nav,
 section {
   display: flex;
@@ -71,9 +74,6 @@ textarea {
   background: none;
   color: inherit;
   outline: none;
-  border: 0 solid transparent;
-  border-color: inherit;
-  font: inherit;
   font-size: 100%;
   vertical-align: baseline;
 }
@@ -85,26 +85,21 @@ ul {
 
 a {
   text-decoration: none;
-  transition: color ease-out 200ms;
+  transition: color ease-out 300ms;
 }
 
-p a {
-  color: black;
-  font-weight: 600;
-}
-
-a:hover {
+p a:hover {
   color: #7f94b0;
 }
 
-html {
+body {
+  background-color: #f6f6f6;
   color: #444;
   font-family: 'Proxima Nova', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.6;
   letter-spacing: 0.07em;
-  min-height: 100%;
 }
 
 section {
@@ -120,27 +115,4 @@ h1 {
 
 p {
   margin-bottom: 1em;
-}
-
-.Header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
-  background-color: black;
-}
-
-.Player {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
-  background-color: black;
-  flex-direction: column;
-}
-
-.controls {
-  justify-content: center;
 }
