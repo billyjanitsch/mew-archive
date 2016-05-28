@@ -48,6 +48,6 @@ module.exports = {
     ],
   },
   postcss: () => [
-    require('autoprefixer')({browsers: ['> 1% in US']}),
+    require('autoprefixer')({browsers: ['last 2 Chrome versions']}),
   ],
 }
