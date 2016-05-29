@@ -1,5 +1,4 @@
 import {observer} from 'mobx-react'
-import {getStore} from '../utils'
 import cs from './styles/Player.css'
 
 const translate = percent => ({transform: `translateX(${percent - 100}%)`})
@@ -16,7 +15,7 @@ const $ProgressBar = props =>
 
 const ProgressBar = observer($ProgressBar)
 
-const $Player = props =>
+const Player = props =>
   <div className={cs.player}>
     <ProgressBar player={props.player} />
     <div className={cs.controls}>
@@ -29,9 +28,4 @@ const $Player = props =>
     </div>
   </div>
 
-const Player = observer($Player)
-
-const PlayerContainer = props =>
-  <Player player={props.store.player} />
-
-export default getStore(PlayerContainer)
+export default observer(Player)

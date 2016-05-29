@@ -1,7 +1,11 @@
 import {computed} from 'mobx'
-import {uniqueId} from 'lodash'
+import {filter, uniqueId} from 'lodash'
 
 export default class Artist {
+  static isArtist(artist) {
+    return artist instanceof Artist
+  }
+
   constructor(store, artist) {
     this.store = store
     this.id = artist.id || uniqueId('artist-')
@@ -10,6 +14,6 @@ export default class Artist {
   }
 
   @computed get albums() {
-    return this.store.albums.find(album => album.artist === this)
+    return filter(this.store.albums, ['artist', this])
   }
 }

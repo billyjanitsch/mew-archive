@@ -1,18 +1,14 @@
 import {observer} from 'mobx-react'
-import {getStore} from '../utils'
+import AlbumGrid from './AlbumGrid'
 
-const $Artist = props => {
+const Artist = props => {
   if (!props.artist) return <div>no such artist</div>
   return (
     <div>
       <h1>{props.artist.name}</h1>
+      <AlbumGrid albums={props.artist.albums} />
     </div>
   )
 }
 
-const Artist = observer($Artist)
-
-const ArtistContainer = props =>
-  <Artist artist={props.store.resolveArtist(props.params.id)} />
-
-export default getStore(ArtistContainer)
+export default observer(Artist)

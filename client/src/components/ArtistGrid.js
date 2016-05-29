@@ -1,6 +1,5 @@
 import {Link} from 'react-router'
 import {observer} from 'mobx-react'
-import {getStore} from '../utils'
 import cs from './styles/ArtistGrid.css'
 
 const $ArtistCard = props =>
@@ -13,14 +12,9 @@ const $ArtistCard = props =>
 
 const ArtistCard = observer($ArtistCard)
 
-const $ArtistGrid = props =>
+const ArtistGrid = props =>
   <div className={cs.grid}>
     {props.artists.map(artist => <ArtistCard key={artist.id} artist={artist} />)}
   </div>
 
-const ArtistGrid = observer($ArtistGrid)
-
-const ArtistGridContainer = props =>
-  <ArtistGrid artists={props.store.collections.artists} />
-
-export default getStore(ArtistGridContainer)
+export default observer(ArtistGrid)

@@ -1,6 +1,5 @@
 import {Link} from 'react-router'
 import {observer} from 'mobx-react'
-import {getStore} from '../utils'
 import cs from './styles/AlbumGrid.css'
 
 const $AlbumCard = props =>
@@ -13,14 +12,9 @@ const $AlbumCard = props =>
 
 const AlbumCard = observer($AlbumCard)
 
-const $AlbumGrid = props =>
+const AlbumGrid = props =>
   <div className={cs.grid}>
     {props.albums.map(album => <AlbumCard key={album.id} album={album} />)}
   </div>
 
-const AlbumGrid = observer($AlbumGrid)
-
-const AlbumGridContainer = props =>
-  <AlbumGrid albums={props.store.collections.albums} />
-
-export default getStore(AlbumGridContainer)
+export default observer(AlbumGrid)

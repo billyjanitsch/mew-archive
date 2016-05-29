@@ -23,7 +23,7 @@ const Page = props =>
     <main className={cs.main}>
       {props.children}
     </main>
-    <Player />
+    <Player player={props.player} />
   </div>
 
 export default Page
