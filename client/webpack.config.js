@@ -28,7 +28,7 @@ module.exports = {
   debug: DEV,
   devtool: DEV && 'cheap-module-eval-source-map',
   resolve: {
-    extensions: ['', '.js', '.css'],
+    extensions: ['', '.js'],
   },
   module: {
     loaders: [
@@ -43,7 +43,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(ttf|eot|png|jpg|svg|woff2?)/,
+        test: /\.(ttf|eot|png|jpg|svg|woff2?)$/,
         loader: 'url?limit=5000',
       },
     ],

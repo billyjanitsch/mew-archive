@@ -1,20 +1,18 @@
-import {connect} from 'react-redux'
-import {createStructuredSelector} from 'reselect'
-import Types from '../types'
-import {artistFactory} from '../selectors'
+import {observer} from 'mobx-react'
+import {getStore} from '../utils'
 
-const Artist = props => props.artist
-  ? <div>
+const $Artist = props => {
+  if (!props.artist) return <div>no such artist</div>
+  return (
+    <div>
       <h1>{props.artist.name}</h1>
     </div>
-  : <div>no such artist</div>
-
-Artist.propTypes = {
-  artist: Types.artist,
+  )
 }
 
-const mapStateToProps = createStructuredSelector({
-  artist: artistFactory('params.id'),
-})
+const Artist = observer($Artist)
 
-export default connect(mapStateToProps)(Artist)
+const ArtistContainer = props =>
+  <Artist artist={props.store.resolveArtist(props.params.id)} />
+
+export default getStore(ArtistContainer)

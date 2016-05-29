@@ -1,62 +1,37 @@
-import {PropTypes} from 'react'
-import {connect} from 'react-redux'
-import {createSelector, createStructuredSelector} from 'reselect'
-import {play, pause, stop, next, prev, navigate} from '../actions'
-import {position, currentTrack, isPlaying} from '../selectors'
-import cs from './styles/Player'
+import {observer} from 'mobx-react'
+import {getStore} from '../utils'
+import cs from './styles/Player.css'
+
+const translate = percent => ({transform: `translateX(${percent - 100}%)`})
 
 const Control = props =>
   <div onClick={props.onClick} className={cs.control}>
     {props.icon}
   </div>
 
-Control.propTypes = {
-  icon: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-}
-
-const ProgressBar = props =>
-  <div className={cs.progress} onClick={props.navigate}>
-    <div className={cs.bar} style={{transform: `translateX(${props.percent - 100}%)`}} />
+const $ProgressBar = props =>
+  <div className={cs.progress} onClick={props.player.navigate}>
+    <div className={cs.bar} style={translate(props.player.percent)} />
   </div>
 
-ProgressBar.propTypes = {
-  percent: PropTypes.number,
-  navigate: PropTypes.func.isRequired,
-}
+const ProgressBar = observer($ProgressBar)
 
-const Player = props =>
+const $Player = props =>
   <div className={cs.player}>
-    <ProgressBar percent={props.percent} navigate={props.navigate} />
+    <ProgressBar player={props.player} />
     <div className={cs.controls}>
-      <Control onClick={props.prev} icon='prev' />
-      {props.isPlaying
-        ? <Control onClick={props.stop} icon='stop' />
-        : <Control onClick={props.play} icon='play' />
+      <Control onClick={props.player.prev} icon='prev' />
+      {props.player.isPlaying
+        ? <Control onClick={props.player.stop} icon='stop' />
+        : <Control onClick={props.player.play} icon='play' />
       }
-      <Control onClick={props.next} icon='next' />
+      <Control onClick={props.player.next} icon='next' />
     </div>
   </div>
 
-Player.propTypes = {
-  prev: PropTypes.func.isRequired,
-  play: PropTypes.func.isRequired,
-  stop: PropTypes.func.isRequired,
-  next: PropTypes.func.isRequired,
-  navigate: PropTypes.func.isRequired,
-  percent: PropTypes.number,
-  currentTrack: PropTypes.object, // track
-  isPlaying: PropTypes.bool.isRequired,
-}
+const Player = observer($Player)
 
-const actions = {play, pause, stop, next, prev, navigate}
+const PlayerContainer = props =>
+  <Player player={props.store.player} />
 
-const percent = createSelector(
-  [position, currentTrack],
-  (position, currentTrack) =>
-    position && currentTrack && position / currentTrack.length * 100
-)
-
-const mapStateToProps = createStructuredSelector({currentTrack, percent, isPlaying})
-
-export default connect(mapStateToProps, actions)(Player)
+export default getStore(PlayerContainer)

@@ -1,17 +1,11 @@
 import {Link} from 'react-router'
-import Types from '../types'
 import Player from './Player'
-import cs from './styles/App'
+import cs from './styles/App.css'
 
 const NavItem = props =>
   <Link to={props.to} className={cs.link} activeClassName={cs.active}>
     {props.children}
   </Link>
-
-NavItem.propTypes = {
-  to: Types.string.isRequired,
-  children: Types.node.isRequired,
-}
 
 const Header = () =>
   <header className={cs.header}>
@@ -23,7 +17,7 @@ const Header = () =>
     login
   </header>
 
-const App = props =>
+const Page = props =>
   <div>
     <Header />
     <main className={cs.main}>
@@ -32,8 +26,4 @@ const App = props =>
     <Player />
   </div>
 
-App.propTypes = {
-  children: Types.element.isRequired,
-}
-
-export default App
+export default Page

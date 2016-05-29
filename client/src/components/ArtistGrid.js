@@ -1,26 +1,26 @@
 import {Link} from 'react-router'
-import {connect} from 'react-redux'
-import {createStructuredSelector} from 'reselect'
-import Types from '../types'
-import {artistFactory} from '../selectors'
-import cs from './styles/ArtistGrid'
+import {observer} from 'mobx-react'
+import {getStore} from '../utils'
+import cs from './styles/ArtistGrid.css'
 
-const ArtistGrid = props =>
+const $ArtistCard = props =>
+  <Link key={props.artist.id} to={`/artist/${props.artist.id}`} className={cs.card}>
+    <div className={cs.image} style={{backgroundImage: `url(${props.artist.image})`}} />
+    <div className={cs.info}>
+      {props.artist.name}
+    </div>
+  </Link>
+
+const ArtistCard = observer($ArtistCard)
+
+const $ArtistGrid = props =>
   <div className={cs.grid}>
-    {props.artists.map(artist =>
-      <Link key={artist.id} to={`/artist/${artist.id}`} className={cs.card}>
-        <div className={cs.image} style={{backgroundImage: `url(${artist.image})`}} />
-        <div className={cs.info}>{artist.name}</div>
-      </Link>
-    )}
+    {props.artists.map(artist => <ArtistCard key={artist.id} artist={artist} />)}
   </div>
 
-ArtistGrid.propTypes = {
-  artists: Types.arrayOf(Types.artist),
-}
+const ArtistGrid = observer($ArtistGrid)
 
-const mapStateToProps = createStructuredSelector({
-  artists: artistFactory(),
-})
+const ArtistGridContainer = props =>
+  <ArtistGrid artists={props.store.collections.artists} />
 
-export default connect(mapStateToProps)(ArtistGrid)
+export default getStore(ArtistGridContainer)
