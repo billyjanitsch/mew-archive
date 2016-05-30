@@ -22,7 +22,8 @@
   "ava": {
     "babel": "inherit",
     "require": [
-      "babel-register"
+      "babel-register",
+      "regenerator-runtime/runtime"
     ]
   },
   "engines": {
@@ -62,6 +63,7 @@
     "react": "15.1.0",
     "react-dom": "15.1.0",
     "react-router": "2.4.1",
+    "regenerator-runtime": "0.9.5",
     "style-loader": "0.13.1",
     "stylelint": "6.5.1",
     "stylelint-config-standard": "8.0.0",

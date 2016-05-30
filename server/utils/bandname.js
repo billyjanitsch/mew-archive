@@ -1,4 +1,4 @@
-import {sample} from 'lodash'
+const sample = require('lodash/sample')
 
 const NOUNS = [
   'Abacus',
@@ -302,4 +302,4 @@ const ADJECTIVES = [
   'Curved',
 ]
 
-export default () => `${sample(ADJECTIVES)} ${sample(NOUNS)}`
+module.exports = () => `${sample(ADJECTIVES)} ${sample(NOUNS)}`

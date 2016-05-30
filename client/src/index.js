@@ -4,6 +4,7 @@ import Store from './store'
 import './styles.css'
 
 const store = new Store()
+window.store = store
 
 const rootElement = document.getElementById('root')
 render(<App store={store} />, rootElement)

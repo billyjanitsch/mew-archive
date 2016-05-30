@@ -1,27 +1,27 @@
-import {observable} from 'mobx'
-import {find, range, random} from 'lodash'
+import {observable, action, transaction} from 'mobx'
+import {find} from 'lodash'
 import {Artist, Album} from '../models'
-import {bandname} from '../utils'
-
-const DUMMY_IMAGE = 'http://s3.amazonaws.com/assets.prod.vetstreet.com/5f/6a6480239a11e28836005056ad4734/file/bella-kitten-137199440.jpg'
+import api from '../api'
 
 export class CollectionStore {
   @observable artists = []
   @observable albums = []
 
   constructor() {
-    range(100).forEach(() => {
-      const artist = new Artist(this, {name: bandname(), image: DUMMY_IMAGE})
-      this.artists.push(artist)
-      range(random(1, 5)).forEach(() => {
-        const album = new Album(this, {title: bandname(), artist: artist.id, image: DUMMY_IMAGE})
-        this.albums.push(album)
-      })
-    })
+    // todo: this doesn't belong here
+    this.fetchAll()
   }
 
   resolveArtist = id => find(this.artists, ['id', id])
   resolveAlbum = id => find(this.albums, ['id', id])
+
+  @action async fetchAll() {
+    const [artists, albums] = [await api('artists'), await api('albums')]
+    transaction(() => {
+      this.artists = artists.map(artist => new Artist(this, artist))
+      this.albums = albums.map(album => new Album(this, album))
+    })
+  }
 }
 
 const collections = new CollectionStore()

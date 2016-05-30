@@ -10,24 +10,24 @@ import {Provider, getStore} from '../utils'
 
 // todo: a nicer way of defining these containers?
 
-const AlbumGridContainer = getStore(({store, ...props}) =>
-  <AlbumGrid albums={store.collections.albums} {...props} />
+const AlbumGridContainer = getStore(props =>
+  <AlbumGrid {...props} albums={props.store.collections.albums} />
 )
 
-const ArtistGridContainer = getStore(({store, ...props}) =>
-  <ArtistGrid artists={store.collections.artists} {...props} />
+const ArtistGridContainer = getStore(props =>
+  <ArtistGrid {...props} artists={props.store.collections.artists} />
 )
 
-const ArtistContainer = getStore(({store, ...props}) =>
-  <Artist artist={store.resolveArtist(props.params.id)} {...props} />
+const ArtistContainer = getStore(props =>
+  <Artist {...props} artist={props.store.resolveArtist(props.params.id)} />
 )
 
-const AlbumContainer = getStore(({store, ...props}) =>
-  <Album album={store.resolveAlbum(props.params.id)} {...props} />
+const AlbumContainer = getStore(props =>
+  <Album {...props} album={props.store.resolveAlbum(props.params.id)} />
 )
 
-const PageContainer = getStore(({store, ...props}) =>
-  <Page player={store.player} {...props} />
+const PageContainer = getStore(props =>
+  <Page {...props} player={props.store.player} />
 )
 
 const App = props =>

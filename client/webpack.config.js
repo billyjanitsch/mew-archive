@@ -9,7 +9,7 @@ const PROD = process.env.NODE_ENV === 'production'
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  entry: ['.'],
+  entry: ['regenerator-runtime/runtime', '.'],
   output: {
     path: path.resolve(__dirname, 'lib'),
     publicPath: '/',
