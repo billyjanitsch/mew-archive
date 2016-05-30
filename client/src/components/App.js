@@ -1,6 +1,12 @@
 import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
-import {AlbumGrid, Album, Page, ArtistGrid, Artist, NotFound} from './components'
-import {Provider, getStore} from './utils'
+import Album from './Album'
+import AlbumGrid from './AlbumGrid'
+import Artist from './Artist'
+import ArtistGrid from './ArtistGrid'
+import Library from './Library'
+import NotFound from './NotFound'
+import Page from './Page'
+import {Provider, getStore} from '../utils'
 
 // todo: a nicer way of defining these containers?
 
@@ -29,7 +35,7 @@ const App = props =>
     <Router history={browserHistory}>
       <Route path='/' component={PageContainer}>
         <IndexRedirect to='library/artists' />
-        <Route path='library'>
+        <Route path='library' component={Library}>
           <Route path='artists' component={ArtistGridContainer} />
           <Route path='albums' component={AlbumGridContainer} />
         </Route>

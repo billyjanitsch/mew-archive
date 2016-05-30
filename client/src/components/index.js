@@ -1,7 +1,0 @@
-export Album from './Album'
-export AlbumGrid from './AlbumGrid'
-export Artist from './Artist'
-export ArtistGrid from './ArtistGrid'
-export NotFound from './NotFound'
-export Page from './Page'
-export Player from './Player'
