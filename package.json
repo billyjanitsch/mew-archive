@@ -19,8 +19,8 @@
   ],
   "dependencies": {
     "express": "^4.13.4",
-    "mews-client": "^0.0.0",
-    "mews-server": "^0.0.0",
+    "mews-client": "file:./client",
+    "mews-server": "file:./server",
     "yargs": "^4.7.1"
   }
 }
