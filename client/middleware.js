@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
   const hot = require('webpack-hot-middleware')
   const config = require('./webpack.config')
 
-  config.entry.unshift('webpack-hot-middleware/client')
+  config.entry.unshift('webpack-hot-middleware/client?reload=true')
   config.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoErrorsPlugin())
 
   const compiler = webpack(config)
