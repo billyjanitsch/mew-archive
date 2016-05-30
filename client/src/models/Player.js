@@ -2,11 +2,19 @@ import {observable, computed, action} from 'mobx'
 import {get} from 'lodash'
 
 export default class Player {
-  @observable playing = false
-  @observable history = []
-  @observable playlist = []
-  @observable current = null
-  @observable position = null
+  @observable playing
+  @observable history
+  @observable playlist
+  @observable current
+  @observable position
+
+  constructor(player = {}) {
+    this.playing = player.playing || false
+    this.history = player.history || []
+    this.playlist = player.playlist || []
+    this.current = player.current || null
+    this.position = player.position || null
+  }
 
   @computed get currentTrack() {
     return get(this.playlist, this.current, null)
@@ -52,5 +60,19 @@ export default class Player {
     this.current = 0
     this.position = null
     this.playing = true
+  }
+
+  toJS() {
+    return {
+      history: this.history.slice(),
+      playlist: this.playlist.slice(),
+      current: this.current,
+      position: this.position,
+      playing: this.playing,
+    }
+  }
+
+  static fromJS(player) {
+    return new Player(player)
   }
 }

@@ -16,4 +16,12 @@ export default class Artist {
   @computed get albums() {
     return filter(this.store.albums, ['artist', this])
   }
+
+  toJS() {
+    return {
+      id: this.id,
+      name: this.name,
+      image: this.image,
+    }
+  }
 }

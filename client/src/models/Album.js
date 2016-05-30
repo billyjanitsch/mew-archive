@@ -8,4 +8,13 @@ export default class Album {
     this.image = album.image
     this.artist = store.resolveArtist(album.artist)
   }
+
+  toJS() {
+    return {
+      id: this.id,
+      title: this.title,
+      image: this.image,
+      artist: this.artist.id,
+    }
+  }
 }
