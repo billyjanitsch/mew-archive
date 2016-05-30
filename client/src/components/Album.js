@@ -1,8 +1,10 @@
 import {observer} from 'mobx-react'
 import {Link} from 'react-router'
 
-const Album = props => props.album
-  ? <div>
+const Album = props => {
+  if (!props.album) return <div>No such album!</div>
+  return (
+    <div>
       <h1>
         {props.album.title}
         by
@@ -11,6 +13,7 @@ const Album = props => props.album
         </Link>
       </h1>
     </div>
-  : <div>no such album</div>
+  )
+}
 
 export default observer(Album)
