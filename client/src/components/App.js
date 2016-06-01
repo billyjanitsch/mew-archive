@@ -11,7 +11,7 @@ import {Provider, getStore} from '../utils'
 // todo: a nicer way of defining these containers?
 
 const AlbumGridContainer = getStore(props =>
-  <AlbumGrid {...props} albums={props.store.albums.all} />
+  <AlbumGrid {...props} shuffle albums={props.store.albums.all} />
 )
 
 const ArtistGridContainer = getStore(props =>

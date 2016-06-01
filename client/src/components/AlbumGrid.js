@@ -1,5 +1,5 @@
 import {Link} from 'react-router'
-import {sortBy, take} from 'lodash'
+import {sortBy, take, sampleSize} from 'lodash'
 import {observer} from 'mobx-react'
 import cs from './styles/AlbumGrid.css'
 
@@ -15,7 +15,7 @@ const AlbumCard = observer($AlbumCard)
 
 const AlbumGrid = props =>
   <div className={cs.grid}>
-    {take(sortBy(props.albums, 'date'), 50)
+    {(props.shuffle ? sampleSize(props.albums, 50) : take(sortBy(props.albums, 'date'), 50))
       .map(album => <AlbumCard key={album.id} album={album} />)
     }
   </div>
