@@ -13,6 +13,10 @@ export default class Artist {
     this.image = artist.image
   }
 
+  @computed get sortName() {
+    return this.name.replace(/(^The |^A )/g, '')
+  }
+
   @computed get albums() {
     return filter(this.store.albums, ['artist', this])
   }

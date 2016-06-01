@@ -1,6 +1,6 @@
 import {observable, action, transaction} from 'mobx'
 import {find} from 'lodash'
-import {Artist, Album, Genre} from '../models'
+import {Artist, Album} from '../models'
 import api from '../api'
 
 export class CollectionStore {

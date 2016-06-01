@@ -12,7 +12,7 @@ const GENRES = _.range(10).map(() => ({
 const ARTISTS = _.range(100).map(() => ({
   id: _.uniqueId('artist_'),
   name: bandname(),
-  genre: _.sample(GENRES).id
+  genre: _.sample(GENRES).id,
   image: DUMMY_IMAGE,
 }))
 
