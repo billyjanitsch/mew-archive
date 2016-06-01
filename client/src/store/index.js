@@ -1,11 +1,13 @@
-import {observable} from 'mobx'
-import collections from './collections'
+import GenreStore from './GenreStore'
+import ArtistStore from './ArtistStore'
+import AlbumStore from './AlbumStore'
+import TrackStore from './TrackStore'
 import {Player} from '../models'
 
 export default class Store {
-  @observable player = new Player()
-  @observable collections = collections
-
-  resolveArtist = this.collections.resolveArtist
-  resolveAlbum = this.collections.resolveAlbum
+  player = new Player()
+  genres = new GenreStore(this)
+  artists = new ArtistStore(this)
+  albums = new AlbumStore(this)
+  tracks = new TrackStore(this)
 }

@@ -1,15 +1,15 @@
 import {computed} from 'mobx'
-import {filter, uniqueId} from 'lodash'
+import {filter} from 'lodash'
 
 export default class Genre {
   constructor(store, genre) {
     this.store = store
-    this.id = genre.id || uniqueId('genre-')
+    this.id = genre.id
     this.name = genre.name
   }
 
   @computed get artists() {
-    return filter(this.store.artists, ['genre', this])
+    return filter(this.store.collections.artists.all, ['genre', this])
   }
 
   toJS() {

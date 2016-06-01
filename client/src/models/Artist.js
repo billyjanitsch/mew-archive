@@ -1,24 +1,29 @@
 import {computed} from 'mobx'
-import {filter, uniqueId} from 'lodash'
+import {filter} from 'lodash'
 
 export default class Artist {
-  static isArtist(artist) {
-    return artist instanceof Artist
-  }
-
   constructor(store, artist) {
     this.store = store
-    this.id = artist.id || uniqueId('artist-')
+    this.id = artist.id
     this.name = artist.name
     this.image = artist.image
+    this._genre = artist.genre
   }
 
   @computed get sortName() {
     return this.name.replace(/(^The |^A )/g, '')
   }
 
+  @computed get genre() {
+    return this.store.collections.genres.get(this._genre)
+  }
+
+  @computed get tracks() {
+    return filter(this.store.collections.tracks.all, ['artist', this])
+  }
+
   @computed get albums() {
-    return filter(this.store.albums, ['artist', this])
+    return filter(this.store.collections.albums.all, ['artist', this])
   }
 
   toJS() {
@@ -26,6 +31,7 @@ export default class Artist {
       id: this.id,
       name: this.name,
       image: this.image,
+      genre: this.genre.id,
     }
   }
 }

@@ -1,6 +1,6 @@
 import {Link} from 'react-router'
 import {observer} from 'mobx-react'
-import {sortBy} from 'lodash'
+import {sortBy, take} from 'lodash'
 import cs from './styles/ArtistGrid.css'
 
 const $ArtistCard = props =>
@@ -15,7 +15,7 @@ const ArtistCard = observer($ArtistCard)
 
 const ArtistGrid = props =>
   <div className={cs.grid}>
-    {sortBy(props.artists, 'sortName')
+    {take(sortBy(props.artists, 'sortName'), 50)
       .map(artist => <ArtistCard key={artist.id} artist={artist} />)
     }
   </div>

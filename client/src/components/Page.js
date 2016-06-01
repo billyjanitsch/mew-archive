@@ -1,3 +1,4 @@
+import DevTools from 'mobx-react-devtools'
 import {Link} from 'react-router'
 import Player from './Player'
 import cs from './styles/App.css'
@@ -19,6 +20,7 @@ const Header = () =>
 
 const Page = props =>
   <div>
+    <DevTools />
     <Header />
     <main className={cs.main}>
       {props.children}

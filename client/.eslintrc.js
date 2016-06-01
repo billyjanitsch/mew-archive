@@ -8,6 +8,7 @@ module.exports = {
     'global-require': 0,
     'jsx-quotes': [2, 'prefer-single'],
     'new-cap': 0,
+    'no-restricted-globals': [2, 'find'],
     'no-confusing-arrow': 0,
     'no-param-reassign': 0,
     'no-shadow': 0,

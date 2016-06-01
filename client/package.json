@@ -59,6 +59,7 @@
     "lodash": "^4.13.1",
     "mobx": "^2.2.2",
     "mobx-react": "^3.3.0",
+    "mobx-react-devtools": "4.2.0",
     "postcss-loader": "^0.9.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",

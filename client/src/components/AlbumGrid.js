@@ -1,5 +1,5 @@
 import {Link} from 'react-router'
-import {sortBy} from 'lodash'
+import {sortBy, take} from 'lodash'
 import {observer} from 'mobx-react'
 import cs from './styles/AlbumGrid.css'
 
@@ -15,7 +15,7 @@ const AlbumCard = observer($AlbumCard)
 
 const AlbumGrid = props =>
   <div className={cs.grid}>
-    {sortBy(props.albums, 'date')
+    {take(sortBy(props.albums, 'date'), 50)
       .map(album => <AlbumCard key={album.id} album={album} />)
     }
   </div>
