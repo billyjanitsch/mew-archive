@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 const express = require('express')
+const compression = require('compression')
 const client = require('mew-client')
 const server = require('mew-server')
 
 const PORT = process.env.PORT || 3000
 
 const app = express()
+
+app.use(compression())
 
 app.use('/api', server)
 app.use(client)

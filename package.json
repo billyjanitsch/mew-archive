@@ -18,6 +18,7 @@
     "music"
   ],
   "dependencies": {
+    "compression": "1.6.2",
     "express": "^4.13.4",
     "mew-client": "file:./client",
     "mew-server": "file:./server",

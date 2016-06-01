@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 
 const isFileRequest = req => !req.headers
   || typeof req.headers.accept !== 'string'
@@ -30,7 +31,7 @@ if (process.env.NODE_ENV === 'development') {
   router.use(hot(compiler))
 } else {
   // serve the pre-built client
-  router.use(express.static('lib'))
+  router.use(express.static(path.resolve(__dirname, 'lib')))
 }
 
 module.exports = router

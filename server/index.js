@@ -9,7 +9,7 @@ const GENRES = _.range(10).map(() => ({
   name: bandname(),
 }))
 
-const ARTISTS = _.range(100).map(() => ({
+const ARTISTS = _.range(3000).map(() => ({
   id: _.uniqueId('artist_'),
   name: bandname(),
   genre: _.sample(GENRES).id,
@@ -17,12 +17,22 @@ const ARTISTS = _.range(100).map(() => ({
 }))
 
 const ALBUMS = _.flatten(ARTISTS.map(artist =>
-  _.range(_.random(1, 5)).map(() => ({
+  _.range(_.random(1, 3)).map(() => ({
     id: _.uniqueId('album_'),
     title: bandname(),
     artist: artist.id,
     date: _.random(1980, 2016),
     image: DUMMY_IMAGE,
+  }))
+))
+
+const TRACKS = _.flatten(ALBUMS.map(album =>
+  _.range(_.random(3, 20)).map(n => ({
+    id: _.uniqueId('track_'),
+    title: bandname() + ' ' + bandname(),
+    number: n,
+    album: album.id,
+    artist: album.artist,
   }))
 ))
 
@@ -38,6 +48,10 @@ api.get('/artists', (req, res) => {
 
 api.get('/albums', (req, res) => {
   res.send(ALBUMS)
+})
+
+api.get('/tracks', (req, res) => {
+  res.send(TRACKS)
 })
 
 module.exports = api
