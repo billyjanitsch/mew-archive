@@ -24,9 +24,11 @@
 .link {
   align-items: center;
   padding: 0 10px;
+  transition: all 200ms;
 }
 
-.active {
+.link:hover,
+.link.active {
   color: white;
 }
 
