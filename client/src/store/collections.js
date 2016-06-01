@@ -1,9 +1,10 @@
 import {observable, action, transaction} from 'mobx'
 import {find} from 'lodash'
-import {Artist, Album} from '../models'
+import {Artist, Album, Genre} from '../models'
 import api from '../api'
 
 export class CollectionStore {
+  @observable genres = []
   @observable artists = []
   @observable albums = []
 
@@ -12,6 +13,7 @@ export class CollectionStore {
     this.fetchAll()
   }
 
+  resolveGenre = id => find(this.genres, ['id', id])
   resolveArtist = id => find(this.artists, ['id', id])
   resolveAlbum = id => find(this.albums, ['id', id])
 

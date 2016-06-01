@@ -1,6 +1,6 @@
 import {observable} from 'mobx'
 import collections from './collections'
-import Player from '../models/Player'
+import {Player} from '../models'
 
 export default class Store {
   @observable player = new Player()
