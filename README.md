@@ -1,15 +1,15 @@
-# Mews
+# Mew
 
-Mews is a tiny music server. :cat2:
+Mew is a tiny music server. :cat2:
 
 ## Install
 
 ```sh
-$ npm install -g mews
+$ npm install -g mew
 ```
 
 ## Usage
 
 ```sh
-$ mews
+$ mew
 ```

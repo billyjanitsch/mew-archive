@@ -1,9 +1,9 @@
 {
-  "name": "mews",
+  "name": "mew",
   "version": "0.0.0",
   "description": "Music client/server",
   "author": "Billy Janitsch <billyjanitsch@gmail.com> (http://github.com/billyjanitsch)",
-  "repository": "billyjanitsch/mews",
+  "repository": "billyjanitsch/mew",
   "license": "MIT",
   "main": "start.js",
   "bin": "cli.js",
@@ -19,8 +19,8 @@
   ],
   "dependencies": {
     "express": "^4.13.4",
-    "mews-client": "file:./client",
-    "mews-server": "file:./server",
+    "mew-client": "file:./client",
+    "mew-server": "file:./server",
     "yargs": "^4.7.1"
   }
 }

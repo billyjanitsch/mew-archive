@@ -1,9 +1,9 @@
 {
-  "name": "mews-server",
+  "name": "mew-server",
   "version": "0.0.0",
-  "description": "Mews server",
+  "description": "Mew server",
   "author": "Billy Janitsch <billyjanitsch@gmail.com> (http://github.com/billyjanitsch)",
-  "repository": "billyjanitsch/mews",
+  "repository": "billyjanitsch/mew",
   "license": "MIT",
   "main": "index.js",
   "keywords": [

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const express = require('express')
-const client = require('mews-client')
-const server = require('mews-server')
+const client = require('mew-client')
+const server = require('mew-server')
 
 const PORT = process.env.PORT || 3000
 
