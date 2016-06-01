@@ -5,6 +5,7 @@ export default class Album {
     this.store = store
     this.id = album.id || uniqueId('album-')
     this.title = album.title
+    this.date = album.date
     this.image = album.image
     this.artist = store.resolveArtist(album.artist)
   }
@@ -13,6 +14,7 @@ export default class Album {
     return {
       id: this.id,
       title: this.title,
+      date: this.date,
       image: this.image,
       artist: this.artist.id,
     }

@@ -21,6 +21,7 @@ const ALBUMS = _.flatten(ARTISTS.map(artist =>
     id: _.uniqueId('album_'),
     title: bandname(),
     artist: artist.id,
+    date: _.random(1980, 2016),
     image: DUMMY_IMAGE,
   }))
 ))
