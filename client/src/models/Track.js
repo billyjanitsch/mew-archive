@@ -5,6 +5,7 @@ export default class Track {
     this.store = store
     this.id = track.id
     this.title = track.title
+    this.number = track.number
     this._artist = track.artist
     this._album = track.album
   }
@@ -21,8 +22,9 @@ export default class Track {
     return {
       id: this.id,
       title: this.title,
-      artist: this.artist.id,
-      album: this.album.id,
+      number: this.number,
+      artist: this._artist,
+      album: this._album,
     }
   }
 }

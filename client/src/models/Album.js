@@ -25,7 +25,7 @@ export default class Album {
       title: this.title,
       date: this.date,
       image: this.image,
-      artist: this.artist.id,
+      artist: this._artist,
     }
   }
 }

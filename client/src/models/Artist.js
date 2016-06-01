@@ -31,7 +31,7 @@ export default class Artist {
       id: this.id,
       name: this.name,
       image: this.image,
-      genre: this.genre.id,
+      genre: this._genre,
     }
   }
 }
