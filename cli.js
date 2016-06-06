@@ -2,12 +2,13 @@
 const yargs = require('yargs')
 
 const argv = yargs
-  .command('start', 'start the server', {}, argv => {
+  .command('start', 'Start the server', {}, argv => {
     require('./start')
   })
-  .command('stop', 'stop the server')
+  .command('stop', 'Stop the server')
   .help()
+  .version()
+  .alias('h', 'help')
+  .alias('v', 'version')
   .strict()
   .argv
-
-console.log('omg')

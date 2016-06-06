@@ -1,6 +1,6 @@
 {
   "name": "mew",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Music client/server",
   "author": "Billy Janitsch <billyjanitsch@gmail.com> (http://github.com/billyjanitsch)",
   "repository": "billyjanitsch/mew",
@@ -10,6 +10,10 @@
   "scripts": {
     "start": "./start.js"
   },
+  "files": [
+    "cli.js",
+    "start.js"
+  ],
   "engines": {
     "node": "^6.0.0",
     "npm": "^3.0.0"
@@ -18,10 +22,10 @@
     "music"
   ],
   "dependencies": {
-    "compression": "1.6.2",
+    "compression": "^1.6.2",
     "express": "^4.13.4",
-    "mew-client": "file:./client",
-    "mew-server": "file:./server",
+    "mew-client": "^0.0.0",
+    "mew-server": "^0.0.0",
     "yargs": "^4.7.1"
   }
 }

@@ -1,4 +1,4 @@
-# Mew
+# μ
 
 Mew is a tiny music server. :cat2:
 
