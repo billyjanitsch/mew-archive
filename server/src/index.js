@@ -1,13 +1,14 @@
 import api from './api'
-import {watch, subscribe} from './watcher'
+import Watcher from './Watcher'
 import {parse} from './parser'
 import {Track} from './models'
 
-subscribe('add', file => {
-  parse(file.path).then(::Track.generate).catch(::console.error)
-})
+const DIRS = ['/Users/billy/Dropbox/music-temp']
 
-const DIR = '/Users/billy/music-temp'
-watch(DIR)
+const watcher = new Watcher(DIRS)
+
+watcher.on('add', file => {
+  parse(file).then(::Track.generate).catch(::console.error)
+})
 
 module.exports = api
