@@ -3,7 +3,7 @@ import {watch, subscribe} from './watcher'
 import {parse} from './parser'
 import {Track} from './models'
 
-subscribe(null, file => {
+subscribe('add', file => {
   parse(file.path).then(::Track.generate).catch(::console.error)
 })
 

@@ -12,6 +12,19 @@ const options = {
   fields: ['name', 'new', 'exists'],
 }
 
+const subscriptions = {
+  add: [],
+  remove: [],
+}
+
+client.on('subscription', resp => {
+  resp.files.forEach(file => {
+    const filePath = path.resolve(resp.root, file.name)
+    const method = file.exists ? 'add' : 'remove'
+    subscriptions[method].forEach(cb => cb(filePath))
+  })
+})
+
 export const watch = dir =>
   client.command(['subscribe', dir, NAME, options])
 
@@ -19,11 +32,5 @@ export const unwatch = dir =>
   client.command(['unsubscribe', dir, NAME])
 
 export const subscribe = (method, cb) => {
-  client.on('subscription', resp => {
-    resp.files.forEach(file => cb({
-      path: path.resolve(resp.root, file.name),
-      exists: file.exists,
-      new: file.new,
-    }))
-  })
+  subscriptions.method.push(cb)
 }
