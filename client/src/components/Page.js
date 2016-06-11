@@ -1,6 +1,7 @@
 import DevTools from 'mobx-react-devtools'
 import {Link} from 'react-router'
 import Player from './Player'
+import Search from './Search'
 import cs from './styles/Page.css'
 
 const NavItem = props =>
@@ -26,6 +27,7 @@ const Page = props =>
       {props.children}
     </main>
     <Player player={props.player} />
+    <Search />
   </div>
 
 export default Page
