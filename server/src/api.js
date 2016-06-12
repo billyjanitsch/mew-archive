@@ -9,12 +9,15 @@ const guard = (req, res, next) =>
     })
 
 const all = Model => (req, res) =>
-  Model.fetchAll()
-    .then(collection => res.send(collection.toJSON()))
+  Model.fetchAll().then(::res.send)
 
-const one = (Model, relations) => (req, res) =>
-  Model.forge({id: req.params.id}).fetch({withRelated: relations})
-    .then(model => model ? res.send(model.toJSON()) : res.sendStatus(404))
+const one = Model => (req, res) =>
+  Model.forge({id: req.params.id})
+    .then(model => model ? res.send(model) : res.sendStatus(404))
+
+const albumsByArtist = (req, res) =>
+  Artist.forge({id: req.params.id}).albums()
+    .then(::res.send)
 
 const api = express.Router() // eslint-disable-line
 
@@ -24,9 +27,14 @@ api.get('/artists', all(Artist))
 api.get('/albums', all(Album))
 api.get('/tracks', all(Track))
 
-api.get('/artists/:id', one(Artist, ['albums', 'albums.tracks']))
-api.get('/albums/:id', one(Album, ['tracks']))
-api.get('/track/:id', one(Track))
+api.get('/artists/:id', one(Artist))
+api.get('/artists/:id/albums', albumsByArtist)
+api.get('/artists/:id/genres', one(Artist))
+
+api.get('/albums/:id', one(Album))
+api.get('/albums/:id/tracks', one(Album))
+
+api.get('/tracks/:id', one(Track))
 
 api.get('/play/:id', (req, res) => {
   Track.forge({id: req.params.id}).fetch({columns: 'file'})
