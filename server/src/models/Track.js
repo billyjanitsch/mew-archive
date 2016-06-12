@@ -6,12 +6,12 @@ import bookshelf from './bookshelf'
 export default Base.extend({
   tableName: 'tracks',
 
-  artist() {
-    return this.belongsTo(Artist, 'artist')
+  artists() {
+    return this.belongsToMany(Artist)
   },
 
   album() {
-    return this.belongsTo(Album, 'album')
+    return this.belongsTo(Album)
   },
 }, {
   fromFile(track, artist, album) {

@@ -6,14 +6,10 @@ export default Base.extend({
   tableName: 'artists',
 
   albums() {
-    return this.hasMany(Album, 'artist')
+    return this.belongsToMany(Album)
   },
 
   tracks() {
-    return this.hasMany(Track, 'artist')
-  },
-}, {
-  fromFile(name) {
-    return this.forge({name})
+    return this.belongsToMany(Track)
   },
 })
