@@ -1,4 +1,5 @@
 import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
+import {Provider, getStore} from '../utils'
 import Album from './Album'
 import AlbumGrid from './AlbumGrid'
 import Artist from './Artist'
@@ -6,7 +7,6 @@ import ArtistGrid from './ArtistGrid'
 import Library from './Library'
 import NotFound from './NotFound'
 import Page from './Page'
-import {Provider, getStore} from '../utils'
 
 // todo: a nicer way of defining these containers?
 

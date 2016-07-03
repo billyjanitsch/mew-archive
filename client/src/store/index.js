@@ -1,8 +1,8 @@
+import {Player} from '../models'
 import GenreStore from './GenreStore'
 import ArtistStore from './ArtistStore'
 import AlbumStore from './AlbumStore'
 import TrackStore from './TrackStore'
-import {Player} from '../models'
 
 export default class Store {
   player = new Player()
