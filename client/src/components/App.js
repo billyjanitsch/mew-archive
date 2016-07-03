@@ -1,5 +1,5 @@
 import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
-import {Provider, getStore} from '../utils'
+import {Provider, observer} from 'mobx-react'
 import Album from './Album'
 import AlbumGrid from './AlbumGrid'
 import Artist from './Artist'
@@ -10,23 +10,23 @@ import Page from './Page'
 
 // todo: a nicer way of defining these containers?
 
-const AlbumGridContainer = getStore(props =>
+const AlbumGridContainer = observer(['store'], props =>
   <AlbumGrid {...props} shuffle albums={props.store.albums.all} />
 )
 
-const ArtistGridContainer = getStore(props =>
+const ArtistGridContainer = observer(['store'], props =>
   <ArtistGrid {...props} artists={props.store.artists.all} />
 )
 
-const ArtistContainer = getStore(props =>
+const ArtistContainer = observer(['store'], props =>
   <Artist {...props} artist={props.store.artists.get(props.params.id)} />
 )
 
-const AlbumContainer = getStore(props =>
+const AlbumContainer = observer(['store'], props =>
   <Album {...props} album={props.store.albums.get(props.params.id)} />
 )
 
-const PageContainer = getStore(props =>
+const PageContainer = observer(['store'], props =>
   <Page {...props} player={props.store.player} />
 )
 
