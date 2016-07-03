@@ -3,7 +3,7 @@ import {sortBy, take, sampleSize} from 'lodash'
 import {observer} from 'mobx-react'
 import cs from './styles/AlbumGrid.css'
 
-const $AlbumCard = props =>
+let AlbumCard = props =>
   <Link key={props.album.id} to={`/album/${props.album.id}`} className={cs.card}>
     <div className={cs.image} style={{backgroundImage: `url(${props.album.image})`}} />
     <div className={cs.info}>
@@ -11,7 +11,7 @@ const $AlbumCard = props =>
     </div>
   </Link>
 
-const AlbumCard = observer($AlbumCard)
+AlbumCard = observer(AlbumCard)
 
 const AlbumGrid = props =>
   <div className={cs.grid}>

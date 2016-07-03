@@ -8,12 +8,12 @@ const Control = props =>
     {props.icon}
   </div>
 
-const $ProgressBar = props =>
+let ProgressBar = props =>
   <div className={cs.progress} onClick={props.player.navigate}>
     <div className={cs.bar} style={translate(props.player.percent)} />
   </div>
 
-const ProgressBar = observer($ProgressBar)
+ProgressBar = observer(ProgressBar)
 
 const Player = props =>
   <div className={cs.player}>
