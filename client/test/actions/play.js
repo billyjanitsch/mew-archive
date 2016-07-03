@@ -2,7 +2,7 @@ import test from 'ava'
 import Player from '../../src/models/Player'
 
 test('does nothing when the playlist is empty', t => {
-  const player = new Player()
+  const player = new Player
   t.is(player.playlist.length, 0, 'starts with an empty playlist')
   t.is(player.current, null)
   t.false(player.playing, 'not playing anything')

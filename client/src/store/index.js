@@ -5,7 +5,7 @@ import AlbumStore from './AlbumStore'
 import TrackStore from './TrackStore'
 
 export default class Store {
-  player = new Player()
+  player = new Player
   genres = new GenreStore(this)
   artists = new ArtistStore(this)
   albums = new AlbumStore(this)
