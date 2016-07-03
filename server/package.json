@@ -15,7 +15,7 @@
     "music"
   ],
   "dependencies": {
-    "bookshelf": "^0.9.5",
+    "bookshelf": "^0.10.0",
     "express": "^4.13.4",
     "fb-watchman": "^1.9.0",
     "knex": "^0.11.5",
