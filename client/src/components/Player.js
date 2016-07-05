@@ -28,4 +28,4 @@ const Player = props =>
     </div>
   </div>
 
-export default observer(Player)
+export default observer(['player'], Player)

@@ -12,7 +12,8 @@ test('does nothing when the playlist is empty', t => {
 
 test('plays the first track when stopped', t => {
   const tracks = [1, 2, 3]
-  const player = Player.fromJS({playlist: tracks})
+  const player = new Player
+  player.playlist = tracks
   player.play()
   t.true(player.playing)
   t.is(player.current, 0, 'playing the first track')

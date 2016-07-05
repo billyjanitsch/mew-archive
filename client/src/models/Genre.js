@@ -1,21 +1,10 @@
-import {computed} from 'mobx'
-import {filter} from 'lodash'
+import {computed, observable} from 'mobx'
+import BaseModel from './BaseModel'
 
-export default class Genre {
-  constructor(store, genre) {
-    this.store = store
-    this.id = genre.id
-    this.name = genre.name
-  }
+export default class Genre extends BaseModel {
+  @observable name
 
   @computed get artists() {
-    return filter(this.store.collections.artists.all, ['genre', this])
-  }
-
-  toJS() {
-    return {
-      id: this.id,
-      name: this.name,
-    }
+    return this.store.artists.filter(['genre', this])
   }
 }

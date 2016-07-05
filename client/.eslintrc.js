@@ -17,6 +17,7 @@ module.exports = {
     'no-class-assign': 2,
     'no-confusing-arrow': 0,
     'no-multiple-empty-lines': [2, {max: 1, maxEOF: 1}],
+    'no-param-reassign': 0,
     'no-restricted-globals': ['error', 'event', 'find', 'open'],
     'no-underscore-dangle': 0,
     'object-curly-spacing': 0,

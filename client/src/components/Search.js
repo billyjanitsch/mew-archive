@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import mousetrap from 'mousetrap'
-import CSSTransitionGroup from 'react-addons-css-transition-group'
+// import CSSTransitionGroup from 'react-addons-css-transition-group'
 import cs from './styles/Search.css'
 
 const Search = () =>
@@ -31,14 +31,14 @@ export default class SearchModal extends Component {
 
   render() {
     return (
-      <CSSTransitionGroup>
+      <div>
         {this.state.open &&
           <div className={cs.modal}>
             <div className={cs.background} onClick={this.close} />
             <Search />
           </div>
         }
-      </CSSTransitionGroup>
+      </div>
     )
   }
 }

@@ -1,31 +1,21 @@
-import {computed} from 'mobx'
-import {filter, sortBy} from 'lodash'
+import {computed, observable} from 'mobx'
+import {sortBy, omit} from 'lodash'
+import BaseModel from './BaseModel'
 
-export default class Album {
-  constructor(store, album) {
-    this.store = store
-    this.id = album.id
-    this.title = album.title
-    this.date = album.date
-    this.image = album.image
-    this._artist = album.artist
+export default class Album extends BaseModel {
+  @observable title
+  @observable year
+  @observable image = 'https://f4.bcbits.com/img/a0755689663_5.jpg'
+
+  parse(data) {
+    return {...omit(data, 'artist'), _artist: data.artist}
   }
 
   @computed get artist() {
-    return this.store.collections.artists.get(this._artist)
+    return this.store.artists.get(this._artist)
   }
 
   @computed get tracks() {
-    return sortBy(filter(this.store.collections.tracks.all, ['album', this]), 'number')
-  }
-
-  toJS() {
-    return {
-      id: this.id,
-      title: this.title,
-      date: this.date,
-      image: this.image,
-      artist: this._artist,
-    }
+    return sortBy(this.store.tracks.filter(['album', this]), 'number')
   }
 }

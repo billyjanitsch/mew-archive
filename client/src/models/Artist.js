@@ -1,37 +1,23 @@
-import {computed} from 'mobx'
-import {filter} from 'lodash'
+import {computed, observable} from 'mobx'
+import BaseModel from './BaseModel'
 
-export default class Artist {
-  constructor(store, artist) {
-    this.store = store
-    this.id = artist.id
-    this.name = artist.name
-    this.image = artist.image
-    this._genre = artist.genre
-  }
+export default class Artist extends BaseModel {
+  @observable name
+  @observable image = 'http://assets0.thefourohfive.com/data/9928/feature/ttng1.jpeg'
 
   @computed get sortName() {
-    return this.name.replace(/(^The |^A )/g, '')
+    return this.name.replace(/^(The|A) /g, '')
   }
 
   @computed get genre() {
-    return this.store.collections.genres.get(this._genre)
+    return this.store.genres.get(this._genre)
   }
 
   @computed get tracks() {
-    return filter(this.store.collections.tracks.all, ['artist', this])
+    return this.store.tracks.filter(['artist', this])
   }
 
   @computed get albums() {
-    return filter(this.store.collections.albums.all, ['artist', this])
-  }
-
-  toJS() {
-    return {
-      id: this.id,
-      name: this.name,
-      image: this.image,
-      genre: this._genre,
-    }
+    return this.store.albums.filter(['artist', this])
   }
 }

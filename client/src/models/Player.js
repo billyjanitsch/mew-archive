@@ -58,16 +58,6 @@ export default class Player {
     return assign(this, props)
   }
 
-  toJS() {
-    return {
-      history: this.history.slice(),
-      playlist: this.playlist.slice(),
-      current: this.current,
-      position: this.position,
-      playing: this.playing,
-    }
-  }
-
   static fromJS(data) {
     return (new Player).set(data)
   }

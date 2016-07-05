@@ -10,30 +10,26 @@ import Page from './Page'
 
 // todo: a nicer way of defining these containers?
 
-const AlbumGridContainer = observer(['store'], props =>
-  <AlbumGrid {...props} shuffle albums={props.store.albums.all} />
+const AlbumGridContainer = observer(['albums'], props =>
+  <AlbumGrid {...props} shuffle albums={props.albums.models} />
 )
 
-const ArtistGridContainer = observer(['store'], props =>
-  <ArtistGrid {...props} artists={props.store.artists.all} />
+const ArtistGridContainer = observer(['artists'], props =>
+  <ArtistGrid {...props} artists={props.artists.models} />
 )
 
-const ArtistContainer = observer(['store'], props =>
-  <Artist {...props} artist={props.store.artists.get(props.params.id)} />
+const ArtistContainer = observer(['artists'], props =>
+  <Artist {...props} artist={props.artists.get(props.params.id)} />
 )
 
-const AlbumContainer = observer(['store'], props =>
-  <Album {...props} album={props.store.albums.get(props.params.id)} />
-)
-
-const PageContainer = observer(['store'], props =>
-  <Page {...props} player={props.store.player} />
+const AlbumContainer = observer(['albums'], props =>
+  <Album {...props} album={props.albums.get(props.params.id)} />
 )
 
 const App = props =>
-  <Provider store={props.store}>
+  <Provider {...props}>
     <Router history={browserHistory}>
-      <Route path='/' component={PageContainer}>
+      <Route path='/' component={Page}>
         <IndexRedirect to='library/artists' />
         <Route path='library' component={Library}>
           <Route path='artists' component={ArtistGridContainer} />
