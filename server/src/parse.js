@@ -13,7 +13,7 @@ const transform = (metadata, file) => ({
   // year: metadata.year.substr(0, 4),
 })
 
-export const parse = file =>
+export default file =>
   new Promise((resolve, reject) => {
     mm(fs.createReadStream(file), (error, metadata) => {
       if (error) reject(error)

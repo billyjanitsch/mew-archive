@@ -22,7 +22,7 @@ export default class Watcher extends EventEmitter {
         this.emit(event, resolve(resp.root, file.name))
       })
     })
-    dirs.forEach(::this.watch)
+    dirs.forEach(dir => this.watch(dir))
   }
 
   watch(dir) {
