@@ -1,9 +1,9 @@
 import express from 'express'
 import {Album, Artist, Track} from './models'
 
-const guard = (req, res, next) => {
+const guard = async (req, res, next) => {
   try {
-    next()
+    await next()
   } catch (error) {
     console.error(error) // eslint-disable-line
     res.sendStatus(500)
