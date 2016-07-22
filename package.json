@@ -6,7 +6,7 @@
   "repository": "billyjanitsch/mew",
   "license": "MIT",
   "main": "start.js",
-  "bin": "cli.js",
+  "bin": "bin/cli.js",
   "scripts": {
     "start": "./start.js"
   },
