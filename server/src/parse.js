@@ -1,4 +1,4 @@
-import fs from 'fs'
+import {createReadStream} from 'fs'
 import mm from 'musicmetadata'
 
 const split = d => d.length && d[0]
@@ -15,7 +15,7 @@ const transform = (metadata, file) => ({
 
 export default file =>
   new Promise((resolve, reject) => {
-    mm(fs.createReadStream(file), (error, metadata) => {
+    mm(createReadStream(file), (error, metadata) => {
       if (error) reject(error)
       else resolve(transform(metadata, file))
     })

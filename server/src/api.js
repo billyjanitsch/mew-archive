@@ -1,12 +1,14 @@
 import express from 'express'
 import {Album, Artist, Track} from './models'
 
-const guard = (req, res, next) =>
-  Promise.resolve(next())
-    .catch(error => {
-      console.error(error) // eslint-disable-line
-      res.sendStatus(500)
-    })
+const guard = (req, res, next) => {
+  try {
+    next()
+  } catch (error) {
+    console.error(error) // eslint-disable-line
+    res.sendStatus(500)
+  }
+}
 
 const all = Model => async (req, res) =>
   res.send(await Model.fetchAll())
