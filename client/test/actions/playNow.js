@@ -3,7 +3,7 @@ import {toJS} from 'mobx'
 import Player from '../../src/models/Player'
 
 test('plays a list of tracks', t => {
-  let player = new Player
+  let player = new Player()
   const tracks = [1, 2, 3]
   player.playNow(tracks)
   player = toJS(player)

@@ -81,5 +81,3 @@ export default class Collection {
     return new this.Model(model, {collection: this, parse: true})
   }
 }
-
-window.Collection = Collection

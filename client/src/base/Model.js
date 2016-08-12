@@ -28,5 +28,3 @@ export default class Model {
     assign(this, data)
   }
 }
-
-window.Model = Model

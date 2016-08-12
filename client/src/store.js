@@ -6,7 +6,7 @@ export default class Store {
   artists = new Artists(null, {store: this})
   genres = new Genres(null, {store: this})
   tracks = new Tracks(null, {store: this})
-  player = new Player
+  player = new Player()
 
   constructor() {
     this.albums.fetch()

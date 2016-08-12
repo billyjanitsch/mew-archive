@@ -14,7 +14,7 @@ export default class Player {
 
   @computed get percent() {
     if (this.position === null || this.currentTrack === null) return null
-    return this.position / this.currentTrack.length * 100
+    return (this.position / this.currentTrack.length) * 100
   }
 
   @computed get queue() {
@@ -59,6 +59,6 @@ export default class Player {
   }
 
   static fromJS(data) {
-    return (new Player).set(data)
+    return (new Player()).set(data)
   }
 }

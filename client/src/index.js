@@ -3,10 +3,9 @@ import App from './components/App'
 import Store from './store'
 import './styles.css'
 
-const store = {...new Store}
-window.store = store
+const store = {...new Store()}
 
-const rootElement = document.getElementById('root')
+const rootElement = document.getElementById('root') // eslint-disable-line
 
 render(<App {...store} />, rootElement)
 
