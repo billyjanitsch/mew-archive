@@ -2,7 +2,7 @@
   "name": "mew",
   "version": "0.0.1",
   "description": "Music client/server",
-  "author": "Billy Janitsch <billyjanitsch@gmail.com> (http://github.com/billyjanitsch)",
+  "author": "Billy Janitsch <billyjanitsch@gmail.com> (http://billyjanitsch.com)",
   "repository": "billyjanitsch/mew",
   "license": "MIT",
   "main": "start.js",
@@ -24,8 +24,8 @@
   "dependencies": {
     "compression": "^1.6.2",
     "express": "^4.13.4",
-    "mew-client": "^0.0.0",
-    "mew-server": "^0.0.0",
+    "mew-client": "^0.0.1",
+    "mew-server": "^0.0.1",
     "yargs": "^4.7.1"
   }
 }

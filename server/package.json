@@ -1,8 +1,8 @@
 {
   "name": "mew-server",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Mew server",
-  "author": "Billy Janitsch <billyjanitsch@gmail.com> (http://github.com/billyjanitsch)",
+  "author": "Billy Janitsch <billyjanitsch@gmail.com> (http://billyjanitsch.com)",
   "repository": "billyjanitsch/mew",
   "license": "MIT",
   "main": "index.js",

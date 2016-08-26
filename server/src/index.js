@@ -3,7 +3,7 @@ import Watcher from './Watcher'
 import parse from './parse'
 import {Track} from './models'
 
-const DIRS = ['/Users/billy/Dropbox/music-temp']
+const DIRS = []
 
 const watcher = new Watcher(DIRS)
 
